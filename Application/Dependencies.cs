@@ -1,8 +1,11 @@
 ﻿namespace Ensek.Energy.Command.Application
 {
+    using Ensek.Energy.Command.Application.InsertMeterReadings;
+    using Ensek.Energy.Command.Application.InsertMeterReadings.Interfaces;
+    using FluentValidation;
+    using MediatR;
     using Microsoft.Extensions.DependencyInjection;
     using System.Reflection;
-    using MediatR;
 
     public static class Dependencies
     {
@@ -10,7 +13,10 @@
         {
             var assembly = Assembly.GetExecutingAssembly();
             return services
-                .AddMediatR(assembly);
+                .AddMediatR(assembly)
+                .AddValidatorsFromAssembly(assembly)
+                .AddTransient<IMeterReadingsValidationService, MeterReadingsValidationService>()
+                ;
         }
     }
 }

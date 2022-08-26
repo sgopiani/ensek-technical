@@ -1,26 +1,27 @@
-﻿
-
-namespace Ensek.Energy.Command.Application.InsertMeterReadings
+﻿namespace Ensek.Energy.Command.Application.InsertMeterReadings
 {
+    using Ensek.Energy.Command.Application.InsertMeterReadings.Interfaces;
     using MediatR;
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
     using static InsertMeterReadings;
 
     public class InsertMeterReadings : IRequestHandler<Request,Response>
     {
-        public InsertMeterReadings()
-        {
+        private IMeterReadingsValidationService _meterReadingsValidationService;
 
+        public InsertMeterReadings(
+            IMeterReadingsValidationService meterReadingsValidationService)
+        {
+            _meterReadingsValidationService = meterReadingsValidationService;
         }
 
-        public Task<Response> Handle(Request request, CancellationToken cancellationToken)
+        public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+             await _meterReadingsValidationService.Validate(request);
+
+            return default;
         }
 
         public class Request : IRequest<Response>
