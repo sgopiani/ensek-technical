@@ -15,7 +15,7 @@
             return services
                 .AddMediatR(assembly)
                 .AddValidatorsFromAssembly(assembly)
-                .AddTransient<IMeterReadingsValidationService, MeterReadingsValidationService>()
+                .AddTransient<IMeterReadingsCleansingService, MeterReadingsCleansingService>()
                 ;
         }
     }

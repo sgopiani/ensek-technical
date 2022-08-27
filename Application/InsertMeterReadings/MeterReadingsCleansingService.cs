@@ -2,28 +2,28 @@
 {
     using Ensek.Energy.Command.Application.InsertMeterReadings.Interfaces;
     using FluentValidation;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using static Ensek.Energy.Command.Application.InsertMeterReadings.InsertMeterReadings;
 
-    public class MeterReadingsValidationService : IMeterReadingsValidationService
+    public class MeterReadingsCleansingService : IMeterReadingsCleansingService
     {
         private IValidator<MeterReading> _meterReadingValidator;
 
-        public MeterReadingsValidationService(
+        public MeterReadingsCleansingService(
             IValidator<MeterReading> meterReadingValidator)
         {
             _meterReadingValidator = meterReadingValidator;
         }
 
-        public async Task<Tuple<IEnumerable<MeterReading>, IEnumerable<string>>> Validate(Request request)
+        public async Task<IEnumerable<MeterReading>> Cleanse(Request request)
         {
-            var meterReadingsToProcess = new List<MeterReading>();
-            var meterReadingFailures = new List<string>();
+            var meterReadings = GetLatestMeterReadingsByAccountId(request.MeterReadings).ToList();
 
-            foreach (var reading in request.MeterReadings)
+            var meterReadingsToProcess = new List<MeterReading>();
+
+            foreach (var reading in meterReadings)
             {
                 var result = await _meterReadingValidator.ValidateAsync(reading);
 
@@ -31,13 +31,14 @@
                 {
                     meterReadingsToProcess.Add(reading);
                 }
-                else
-                {
-                    meterReadingFailures.AddRange(result.Errors.Select(x => x.ErrorMessage));
-                }
             }
 
-            return new Tuple<IEnumerable<MeterReading>, IEnumerable<string>>(meterReadingsToProcess, meterReadingFailures);
+            return meterReadingsToProcess;
         }
+
+        private IEnumerable<MeterReading> GetLatestMeterReadingsByAccountId(List<MeterReading> meterReadings) =>
+            meterReadings.GroupBy(r => r.AccountId)
+                  .Select(grp => grp.MaxBy(y => y.MeterReadingDateTime));
+
     }
 }

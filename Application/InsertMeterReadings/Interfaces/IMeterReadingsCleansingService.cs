@@ -3,8 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    public interface IMeterReadingsValidationService
+    public interface IMeterReadingsCleansingService
     {
-        Task<Tuple<IEnumerable<MeterReading>, IEnumerable<string>>> Validate(InsertMeterReadings.Request request);
+        Task<IEnumerable<MeterReading>> Cleanse(InsertMeterReadings.Request request);
     }
 }

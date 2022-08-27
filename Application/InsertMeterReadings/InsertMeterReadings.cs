@@ -9,19 +9,22 @@
 
     public class InsertMeterReadings : IRequestHandler<Request,Response>
     {
-        private IMeterReadingsValidationService _meterReadingsValidationService;
+        private IMeterReadingsCleansingService _meterReadingsCleansingService;
 
         public InsertMeterReadings(
-            IMeterReadingsValidationService meterReadingsValidationService)
+            IMeterReadingsCleansingService meterReadingsValidationService)
         {
-            _meterReadingsValidationService = meterReadingsValidationService;
+            _meterReadingsCleansingService = meterReadingsValidationService;
         }
 
         public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
         {
-             await _meterReadingsValidationService.Validate(request);
+             var result = await _meterReadingsCleansingService.Cleanse(request);
 
-            return default;
+            return new Response
+            {
+                
+            };
         }
 
         public class Request : IRequest<Response>
@@ -31,7 +34,8 @@
 
         public class Response
         {
-
+            public int Failures { get; set; }
+            public IEnumerable<MeterReading> Sucessful { get; set; }
         }
     }
 }
