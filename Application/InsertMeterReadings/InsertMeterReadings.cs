@@ -19,7 +19,8 @@
 
         public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
         {
-             var result = await _meterReadingsCleansingService.Cleanse(request);
+             var meterReadingsToProcess = await _meterReadingsCleansingService.Cleanse(request);
+            //var processedRows = await _meterReadingsRepository.InsertMeterReadings(meterReadingsToProcess);
 
             return new Response
             {
