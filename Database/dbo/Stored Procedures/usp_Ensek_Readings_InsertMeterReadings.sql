@@ -22,7 +22,7 @@ BEGIN
 	FROM Accounts a
 	INNER JOIN @MeterReadings mr ON mr.AccountId = a.AccountId
 
-	INSERT INTO Readings(AccountId, ReadingDateTime, ReadingValue)
+	INSERT INTO Readings(AccountId, ReadingDateTime, MeterReadValue)
 	SELECT mr.AccountId, mr.MeterReadingDateTime, mr.MeterReadValue
 	FROM @MeterReadings mr
 	INNER JOIN @ExistingAccounts ea ON ea.AccountId = mr.AccountId
@@ -33,7 +33,7 @@ BEGIN
 
 	UPDATE Readings
 	SET ReadingDateTime = mr.MeterReadingDateTime,
-		ReadingValue = mr.MeterReadValue
+		MeterReadValue = mr.MeterReadValue
 	FROM @MeterReadings mr
 	INNER JOIN Readings r ON mr.AccountId = r.AccountId AND mr.MeterReadingDateTime > r.ReadingDateTime;
 

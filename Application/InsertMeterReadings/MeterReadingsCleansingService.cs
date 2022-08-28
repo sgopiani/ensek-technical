@@ -1,6 +1,7 @@
 ﻿namespace Ensek.Energy.Command.Application.InsertMeterReadings
 {
     using Ensek.Energy.Command.Application.InsertMeterReadings.Interfaces;
+    using Ensek.Energy.Command.Model;
     using FluentValidation;
     using System.Collections.Generic;
     using System.Linq;

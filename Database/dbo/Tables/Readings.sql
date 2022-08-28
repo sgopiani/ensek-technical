@@ -2,7 +2,7 @@
 	[ReadingId] [int] IDENTITY(1,1) NOT NULL,
 	[AccountId] [int] NOT NULL,
 	[ReadingDateTime] [datetime] NOT NULL,
-	[ReadingValue] [nvarchar](5) NOT NULL,
+	[MeterReadValue] [nvarchar](5) NOT NULL,
  CONSTRAINT [PK_Readings] PRIMARY KEY CLUSTERED 
 (
 	[ReadingId] ASC

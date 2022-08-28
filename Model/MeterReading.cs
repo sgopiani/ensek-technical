@@ -1,4 +1,4 @@
-﻿namespace Ensek.Energy.Command.Application.InsertMeterReadings
+﻿namespace Ensek.Energy.Command.Model
 {
     using System;
     public class MeterReading

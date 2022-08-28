@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{B232E8EC-69CD-46DF-8EB3-5EE02C8A8CDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{F92734F8-47C4-40B0-BB15-43ACA5B782C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{F92734F8-47C4-40B0-BB15-43ACA5B782C6}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{6557FA64-0EE5-4A07-A4A3-E7CB08B41941}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{C6F07500-D4E2-44DF-8469-CD5014C9FBAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{6557FA64-0EE5-4A07-A4A3-E7CB08B41941}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6557FA64-0EE5-4A07-A4A3-E7CB08B41941}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6557FA64-0EE5-4A07-A4A3-E7CB08B41941}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C6F07500-D4E2-44DF-8469-CD5014C9FBAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6F07500-D4E2-44DF-8469-CD5014C9FBAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6F07500-D4E2-44DF-8469-CD5014C9FBAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6F07500-D4E2-44DF-8469-CD5014C9FBAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,6 +3,7 @@
     using CsvHelper;
     using Ensek.Energy.Command.API.Mappers;
     using Ensek.Energy.Command.Application.InsertMeterReadings;
+    using Ensek.Energy.Command.Model;
     using MediatR;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;

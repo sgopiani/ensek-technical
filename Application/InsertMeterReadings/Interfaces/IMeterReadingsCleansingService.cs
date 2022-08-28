@@ -1,6 +1,6 @@
 ﻿namespace Ensek.Energy.Command.Application.InsertMeterReadings.Interfaces
 {
-    using System;
+    using Ensek.Energy.Command.Model;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     public interface IMeterReadingsCleansingService

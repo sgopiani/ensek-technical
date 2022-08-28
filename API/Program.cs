@@ -1,4 +1,5 @@
 using Ensek.Energy.Command.Application;
+using Ensek.Energy.Command.Infrastructure;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +16,7 @@ services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 services.AddMediatR(Assembly.GetExecutingAssembly());
 services.AddApplication();
+services.AddInfrastructure();
 
 var app = builder.Build();
 

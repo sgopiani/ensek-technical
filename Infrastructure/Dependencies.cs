@@ -5,7 +5,7 @@
 
     public static class Dependencies
     {
-        public static IServiceCollection AddApplication(this IServiceCollection services)
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             return services
                 .AddSingleton<IMeterReadingsRepository, MeterReadingsRepository>()
