@@ -1,3 +1,4 @@
+using CsvHelper;
 using Ensek.Energy.Command.Application;
 using Ensek.Energy.Command.Infrastructure;
 using MediatR;
@@ -17,6 +18,8 @@ services.AddSwaggerGen();
 services.AddMediatR(Assembly.GetExecutingAssembly());
 services.AddApplication();
 services.AddInfrastructure();
+
+services.AddTransient<IFactory, Factory>();
 
 var app = builder.Build();
 

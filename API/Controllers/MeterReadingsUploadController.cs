@@ -18,14 +18,16 @@
     public class MeterReadingsUploadController : Controller
     {
         private IMediator _mediator;
+        private IFactory _csvFactory;
 
         private IEnumerable<string> AllowedFileTypes = new List<string> {
             ".csv"
         };
 
-        public MeterReadingsUploadController(IMediator mediator)
+        public MeterReadingsUploadController(IMediator mediator, IFactory csvFactory)
         {
             _mediator = mediator;
+            _csvFactory = csvFactory;
         }
 
         [HttpPost]
@@ -53,13 +55,13 @@
 
         }
 
-        private static List<MeterReading> DeserialiseMeterReadings(IFormFile file)
+        private List<MeterReading> DeserialiseMeterReadings(IFormFile file)
         {
             var meterReadings = new List<MeterReading>();
 
 
             using (var reader = new StreamReader(file.OpenReadStream()))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            using (var csv = _csvFactory.CreateReader(reader, CultureInfo.InvariantCulture))
             {
                 csv.Context.RegisterClassMap<MeterReadingCsvMapper>();
                 meterReadings = csv.GetRecords<MeterReading>().ToList();
