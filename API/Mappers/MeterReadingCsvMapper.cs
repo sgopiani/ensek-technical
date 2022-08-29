@@ -3,7 +3,7 @@
     using CsvHelper;
     using CsvHelper.Configuration;
     using CsvHelper.TypeConversion;
-    using Ensek.Energy.Command.Model;
+    using Ensek.Energy.Command.API.Model;
     using System;
 
     public class MeterReadingCsvMapper : ClassMap<MeterReading>

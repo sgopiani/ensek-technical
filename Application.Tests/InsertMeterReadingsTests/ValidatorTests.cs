@@ -1,7 +1,7 @@
 ﻿namespace Ensek.Energy.Command.API.Application.Tests.InsertMeterReadingsTests
 {
     using Ensek.Energy.Command.API.Application.InsertMeterReadings;
-    using Ensek.Energy.Command.Model;
+    using Ensek.Energy.Command.API.Model;
     using FluentAssertions;
     using FluentAssertions.Execution;
     using Microsoft.VisualStudio.TestTools.UnitTesting;

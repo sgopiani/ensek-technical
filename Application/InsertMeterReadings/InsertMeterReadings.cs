@@ -1,8 +1,8 @@
 ﻿namespace Ensek.Energy.Command.API.Application.InsertMeterReadings
 {
     using Ensek.Energy.Command.API.Application.InsertMeterReadings.Interfaces;
-    using Ensek.Energy.Command.Infrastructure.Interfaces;
-    using Ensek.Energy.Command.Model;
+    using Ensek.Energy.Command.API.Infrastructure.Interfaces;
+    using Ensek.Energy.Command.API.Model;
     using MediatR;
     using System.Collections.Generic;
     using System.Linq;

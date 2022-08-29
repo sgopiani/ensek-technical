@@ -1,8 +1,8 @@
-﻿namespace Ensek.Energy.Command.Infrastructure
+﻿namespace Ensek.Energy.Command.API.Infrastructure
 {
     using Dapper;
-    using Ensek.Energy.Command.Infrastructure.Interfaces;
-    using Ensek.Energy.Command.Model;
+    using Ensek.Energy.Command.API.Infrastructure.Interfaces;
+    using Ensek.Energy.Command.API.Model;
     using System;
     using System.Collections.Generic;
     using System.Data;

@@ -1,6 +1,6 @@
 ﻿namespace Ensek.Energy.Command.API.Application.InsertMeterReadings
 {
-    using Ensek.Energy.Command.Model;
+    using Ensek.Energy.Command.API.Model;
     using FluentValidation;
     public class MeterReadingValidator : AbstractValidator<MeterReading>
     {

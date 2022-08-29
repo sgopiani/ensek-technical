@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-	  <RootNamespace>Ensek.Energy.Command.Infrastructure</RootNamespace>
-	  <AssemblyName>Ensek.Energy.Command.Infrastructure</AssemblyName>
+	  <RootNamespace>Ensek.Energy.Command.API.Infrastructure</RootNamespace>
+	  <AssemblyName>Ensek.Energy.Command.API.Infrastructure</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

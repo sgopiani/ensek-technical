@@ -4,7 +4,7 @@ namespace Ensek.Energy.Command.API.Tests
     using CsvHelper.Configuration;
     using Ensek.Energy.Command.API.Controllers;
     using Ensek.Energy.Command.API.Application.InsertMeterReadings;
-    using Ensek.Energy.Command.Model;
+    using Ensek.Energy.Command.API.Model;
     using FluentAssertions;
     using MediatR;
     using Microsoft.AspNetCore.Http;

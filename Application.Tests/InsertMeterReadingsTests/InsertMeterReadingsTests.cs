@@ -1,18 +1,15 @@
 ﻿namespace Ensek.Energy.Command.API.Application.Tests.InsertMeterReadingsTests
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System;
     using Ensek.Energy.Command.API.Application.InsertMeterReadings;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Ensek.Energy.Command.API.Application.InsertMeterReadings.Interfaces;
-    using Ensek.Energy.Command.Infrastructure.Interfaces;
-    using Moq;
-    using Ensek.Energy.Command.Model;
-    using FluentAssertions.Execution;
+    using Ensek.Energy.Command.API.Infrastructure.Interfaces;
+    using Ensek.Energy.Command.API.Model;
     using FluentAssertions;
+    using FluentAssertions.Execution;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     [TestClass]
     [TestCategory($"Hadlers - {nameof(InsertMeterReadings)}")]

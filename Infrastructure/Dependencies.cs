@@ -1,6 +1,6 @@
-﻿namespace Ensek.Energy.Command.Infrastructure
+﻿namespace Ensek.Energy.Command.API.Infrastructure
 {
-    using Ensek.Energy.Command.Infrastructure.Interfaces;
+    using Ensek.Energy.Command.API.Infrastructure.Interfaces;
     using Microsoft.Extensions.DependencyInjection;
 
     public static class Dependencies

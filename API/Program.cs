@@ -1,6 +1,6 @@
 using CsvHelper;
-using Ensek.Energy.Command.Application;
-using Ensek.Energy.Command.Infrastructure;
+using Ensek.Energy.Command.API.Application;
+using Ensek.Energy.Command.API.Infrastructure;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
