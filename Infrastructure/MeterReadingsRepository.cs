@@ -15,16 +15,20 @@
 
         public async Task<int> InsertMeterReadings(IEnumerable<MeterReading> meterReadings)
         {
-            var meterReadingDataTable = BuilDataTableParameter(meterReadings).AsTableValuedParameter("dt_MeterReadings");
+            var result = 0;
             using (IDbConnection db = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=EnsekMeterReading;Trusted_Connection=True;"))
             {
                 db.Open();
-                var result = await db.QuerySingleAsync<int>(
+                result = await db.QuerySingleAsync<int>(
                     INSERT_METER_READINGS,
-                    new { MeterReadings = meterReadingDataTable },
+                    new
+                    {
+                        MeterReadings = BuilDataTableParameter(meterReadings).AsTableValuedParameter("dt_MeterReadings")
+                    },
                     commandType: CommandType.StoredProcedure);
-                return result;
             }
+            return result;
+
         }
 
         private DataTable BuilDataTableParameter(IEnumerable<MeterReading> meterReadings)

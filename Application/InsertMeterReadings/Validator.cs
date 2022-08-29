@@ -9,8 +9,7 @@
             RuleFor(x => x.AccountId).NotNull();
             RuleFor(x => x.MeterReadingDateTime).NotNull();
             RuleFor(x => x.MeterReadValue)
-                .Matches("^\\d{5}$")
-                .WithMessage((reading, readingValue) => $"Invalid Meter Read Value for Account {reading.AccountId}");
+                .Matches("^\\d{5}$");
         }
     }
 }

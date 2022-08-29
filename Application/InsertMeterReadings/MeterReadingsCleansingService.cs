@@ -20,7 +20,7 @@
 
         public async Task<IEnumerable<MeterReading>> Cleanse(Request request)
         {
-            var meterReadings = GetLatestMeterReadingsByAccountId(request.MeterReadings).ToList();
+            var meterReadings = GetLatestMeterReadingsByAccountId(request.MeterReadings);
 
             var meterReadingsToProcess = new List<MeterReading>();
 
@@ -38,8 +38,7 @@
         }
 
         private IEnumerable<MeterReading> GetLatestMeterReadingsByAccountId(List<MeterReading> meterReadings) =>
-            meterReadings.GroupBy(r => r.AccountId)
-                  .Select(grp => grp.MaxBy(y => y.MeterReadingDateTime));
+            meterReadings.GroupBy(r => r.AccountId).Select(grp => grp.MaxBy(y => y.MeterReadingDateTime));
 
     }
 }
