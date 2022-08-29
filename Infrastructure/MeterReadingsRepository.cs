@@ -3,6 +3,7 @@
     using Dapper;
     using Ensek.Energy.Command.Infrastructure.Interfaces;
     using Ensek.Energy.Command.Model;
+    using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Data.SqlClient;
@@ -11,16 +12,34 @@
     public class MeterReadingsRepository : IMeterReadingsRepository
     {
         private const string INSERT_METER_READINGS = "usp_Ensek_Readings_InsertMeterReadings";
-       
+
         public async Task<int> InsertMeterReadings(IEnumerable<MeterReading> meterReadings)
         {
-            var meterReadingDataTable = meterReadings;
+            var meterReadingDataTable = BuilDataTableParameter(meterReadings).AsTableValuedParameter("dt_MeterReadings");
             using (IDbConnection db = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=EnsekMeterReading;Trusted_Connection=True;"))
             {
                 db.Open();
-                var result = db.QuerySingle<int>(INSERT_METER_READINGS, meterReadingDataTable, commandType: CommandType.StoredProcedure);
+                var result = await db.QuerySingleAsync<int>(
+                    INSERT_METER_READINGS,
+                    new { MeterReadings = meterReadingDataTable },
+                    commandType: CommandType.StoredProcedure);
                 return result;
             }
+        }
+
+        private DataTable BuilDataTableParameter(IEnumerable<MeterReading> meterReadings)
+        {
+            var dt = new DataTable();
+            dt.Columns.Add(nameof(MeterReading.AccountId), typeof(int));
+            dt.Columns.Add(nameof(MeterReading.MeterReadingDateTime), typeof(DateTime));
+            dt.Columns.Add(nameof(MeterReading.MeterReadValue), typeof(string));
+
+            foreach (var reading in meterReadings)
+            {
+                dt.Rows.Add(reading.AccountId, reading.MeterReadingDateTime, reading.MeterReadValue);
+            }
+
+            return dt;
         }
     }
 }
