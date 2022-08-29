@@ -12,14 +12,24 @@
     public class MeterReadingsRepository : IMeterReadingsRepository
     {
         private const string INSERT_METER_READINGS = "usp_Ensek_Readings_InsertMeterReadings";
+        private IDbConnectionFactory _dbConnectionFactory;
+        private IDapperWrapper _dapper;
+
+        public MeterReadingsRepository(IDbConnectionFactory dbConnectionFactory,
+            IDapperWrapper dapper)
+        {
+            _dbConnectionFactory = dbConnectionFactory;
+            _dapper = dapper;
+        }
 
         public async Task<int> InsertMeterReadings(IEnumerable<MeterReading> meterReadings)
         {
             var result = 0;
-            using (IDbConnection db = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=EnsekMeterReading;Trusted_Connection=True;"))
+            using (IDbConnection db = _dbConnectionFactory.GetConnection())
             {
                 db.Open();
-                result = await db.QuerySingleAsync<int>(
+                result = await _dapper.QuerySingleAsync<int>(
+                    db,
                     INSERT_METER_READINGS,
                     new
                     {

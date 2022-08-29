@@ -9,6 +9,8 @@
         {
             return services
                 .AddSingleton<IMeterReadingsRepository, MeterReadingsRepository>()
+                .AddSingleton<IDbConnectionFactory, DbConnectionFactory>()
+                .AddTransient<IDapperWrapper, DapperWrapper>()
                 ;
         }
     }
