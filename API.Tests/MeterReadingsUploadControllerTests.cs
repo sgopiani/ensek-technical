@@ -1,9 +1,9 @@
-namespace API.Tests
+namespace Ensek.Energy.Command.API.Tests
 {
     using CsvHelper;
     using CsvHelper.Configuration;
     using Ensek.Energy.Command.API.Controllers;
-    using Ensek.Energy.Command.Application.InsertMeterReadings;
+    using Ensek.Energy.Command.API.Application.InsertMeterReadings;
     using Ensek.Energy.Command.Model;
     using FluentAssertions;
     using MediatR;

@@ -1,4 +1,4 @@
-﻿namespace Ensek.Energy.Command.Application.InsertMeterReadings.Interfaces
+﻿namespace Ensek.Energy.Command.API.Application.InsertMeterReadings.Interfaces
 {
     using Ensek.Energy.Command.Model;
     using System.Collections.Generic;

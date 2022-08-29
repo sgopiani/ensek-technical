@@ -1,10 +1,11 @@
-﻿namespace Ensek.Energy.Command.Application.InsertMeterReadings
+﻿namespace Ensek.Energy.Command.API.Application.InsertMeterReadings
 {
-    using Ensek.Energy.Command.Application.InsertMeterReadings.Interfaces;
+    using Ensek.Energy.Command.API.Application.InsertMeterReadings.Interfaces;
     using Ensek.Energy.Command.Infrastructure.Interfaces;
     using Ensek.Energy.Command.Model;
     using MediatR;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using static InsertMeterReadings;
@@ -24,8 +25,18 @@
 
         public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
         {
-            var meterReadingsToProcess = await _meterReadingsCleansingService.Cleanse(request);
-            var processedRows = await _meterReadingsRepository.InsertMeterReadings(meterReadingsToProcess);
+            int processedRows = 0;
+            IEnumerable<MeterReading> meterReadingsToProcess = request.MeterReadings;
+
+            if (meterReadingsToProcess.Any())
+            {
+                meterReadingsToProcess = await _meterReadingsCleansingService.Cleanse(request);
+            }
+
+            if (meterReadingsToProcess.Any())
+            {
+                processedRows = await _meterReadingsRepository.InsertMeterReadings(meterReadingsToProcess);
+            }
 
             return new Response
             {

@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+	  <RootNamespace>Ensek.Energy.Command.API.Application.Tests</RootNamespace>
+	   <AssemblyName>Ensek.Energy.Command.API.Application.Tests</AssemblyName>
 
-	  <RootNamespace>Ensek.Energy.Command.API.Tests</RootNamespace>
-	   <AssemblyName>Ensek.Energy.Command.API.Tests</AssemblyName>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\API\API.csproj" />
+    <ProjectReference Include="..\Application\Application.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,12 +1,12 @@
-﻿namespace Ensek.Energy.Command.Application.InsertMeterReadings
+﻿namespace Ensek.Energy.Command.API.Application.InsertMeterReadings
 {
-    using Ensek.Energy.Command.Application.InsertMeterReadings.Interfaces;
+    using Ensek.Energy.Command.API.Application.InsertMeterReadings.Interfaces;
     using Ensek.Energy.Command.Model;
     using FluentValidation;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using static Ensek.Energy.Command.Application.InsertMeterReadings.InsertMeterReadings;
+    using static Ensek.Energy.Command.API.Application.InsertMeterReadings.InsertMeterReadings;
 
     public class MeterReadingsCleansingService : IMeterReadingsCleansingService
     {
